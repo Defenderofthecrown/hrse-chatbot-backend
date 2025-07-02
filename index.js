@@ -2,17 +2,21 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000; // <-- Hier definiert
+const PORT = process.env.PORT || 3000;
 
+// CORS-Konfiguration explizit definieren
 app.use(cors({
-  origin: 'http://localhost:5173'  // für lokale Entwicklung
+  origin: '*', // Für Entwicklung; später einschränken z. B. auf: 'http://localhost:5173'
 }));
+
 app.use(express.json());
 
+// Testroute
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from HRSE Backend!' });
 });
 
+// Chat-Route
 app.post('/api/chat', (req, res) => {
   const userMessage = req.body.message;
 
