@@ -2,17 +2,15 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // <-- Hier definiert
 
 app.use(cors());
 app.use(express.json());
 
-// Test-Route
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from HRSE Backend!' });
 });
 
-// Chat-Route
 app.post('/api/chat', (req, res) => {
   const userMessage = req.body.message;
 
@@ -21,7 +19,6 @@ app.post('/api/chat', (req, res) => {
   }
 
   const botResponse = `Du hast gesagt: "${userMessage}"`;
-
   res.json({ reply: botResponse });
 });
 
