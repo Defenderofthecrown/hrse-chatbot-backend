@@ -1,9 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const PORT = process.env.PORT || 10000;
+const cors = require('cors');
 
-app.use(bodyParser.json());
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 // Test-Route
 app.get('/api/hello', (req, res) => {
