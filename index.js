@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(cors());
 app.use(express.json());
 
@@ -10,7 +12,7 @@ app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from HRSE Backend!' });
 });
 
-// NEU: Chat-Route
+// Chat-Route
 app.post('/api/chat', (req, res) => {
   const userMessage = req.body.message;
 
@@ -18,7 +20,6 @@ app.post('/api/chat', (req, res) => {
     return res.status(400).json({ error: 'Message is required' });
   }
 
-  // Platzhalterantwort
   const botResponse = `Du hast gesagt: "${userMessage}"`;
 
   res.json({ reply: botResponse });
